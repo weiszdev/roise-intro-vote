@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vote for the Røise Family Intro</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,"Palatino Linotype",Palatino,"Book Antiqua",serif;color:#3b2412;
+background:#d9b98a repeating-linear-gradient(90deg,rgba(90,52,20,.07) 0 2px,transparent 2px 46px),linear-gradient(#e6cba0,#c99c63);min-height:100vh}
+header{text-align:center;padding:28px 16px 8px;background:#5a3414;border-bottom:6px double #e2b660;color:#f6e3bd;
+box-shadow:0 4px 12px rgba(0,0,0,.35)}
+h1{margin:0;font-family:Rockwell,"Rockwell Extra Bold","Copperplate Gothic Bold","Clarendon","Bookman Old Style","Georgia",serif;
+font-size:clamp(1.8rem,7vw,3rem);letter-spacing:.04em;text-transform:uppercase;text-shadow:2px 2px 0 #2b170a;color:#f6d98c}
+.star{color:#e2b660;letter-spacing:.5em;font-size:1rem}
+header p{font-style:italic;font-size:1.1rem;margin:.4em 0 1em}
+main{max-width:720px;margin:0 auto;padding:18px 14px 40px;display:grid;gap:18px}
+.card{position:relative;background:#f7ead0;border:3px solid #6b4020;border-radius:10px;padding:18px 16px 16px 16px;
+box-shadow:0 0 0 3px #f7ead0,0 0 0 5px #6b4020,0 6px 14px rgba(0,0,0,.3)}
+.card.picked{background:#fff3c4;border-color:#a8431a;box-shadow:0 0 0 3px #fff3c4,0 0 0 6px #a8431a,0 6px 14px rgba(0,0,0,.3)}
+.num{position:absolute;top:-14px;left:-10px;width:38px;height:38px;border-radius:50%;background:#a8431a;color:#fff3c4;
+font:bold 1.2rem Georgia,serif;display:flex;align-items:center;justify-content:center;border:3px solid #f7ead0;box-shadow:0 2px 4px rgba(0,0,0,.4)}
+h2{margin:0 0 2px 22px;font-family:Rockwell,"Clarendon","Bookman Old Style",Georgia,serif;font-size:1.45rem;color:#4a2a12}
+.style{margin:0 0 12px 22px;font-style:italic;color:#7a4a22}
+audio{width:100%;margin:4px 0 10px}
+details{margin-bottom:12px}
+summary{cursor:pointer;color:#7a4a22;font-weight:bold}
+pre{white-space:pre-wrap;font-family:inherit;background:#efdcb6;border-left:4px solid #a8431a;padding:10px 12px;margin:8px 0 0;border-radius:4px}
+button{font-family:Rockwell,"Clarendon","Bookman Old Style",Georgia,serif;cursor:pointer;border-radius:8px;font-weight:bold}
+.vote{width:100%;padding:16px;font-size:1.25rem;background:#a8431a;color:#fff3c4;border:3px solid #6b2a0e;
+text-transform:uppercase;letter-spacing:.05em;box-shadow:0 4px 0 #6b2a0e}
+.vote:active{transform:translateY(3px);box-shadow:0 1px 0 #6b2a0e}
+.send{margin-top:14px;padding:12px;background:#efdcb6;border:2px dashed #6b4020;border-radius:8px}
+.send[hidden],#thanks[hidden]{display:none}
+label{display:block;font-weight:bold;margin-bottom:10px}
+input{display:block;width:100%;margin-top:4px;padding:12px;font-size:1rem;font-family:inherit;border:2px solid #6b4020;border-radius:6px;background:#fffaf0}
+.sendbtn{width:100%;padding:14px;font-size:1.15rem;background:#2f6b2f;color:#fff;border:3px solid #1c4a1c;box-shadow:0 3px 0 #1c4a1c}
+#thanks{max-width:720px;margin:18px auto 0;padding:20px;background:#fff3c4;border:3px solid #2f6b2f;border-radius:10px;text-align:center;font-size:1.15rem}
+#thanks h3{margin:0 0 6px;font-family:Rockwell,Georgia,serif;font-size:1.6rem;color:#2f6b2f}
+#thanks p{margin:.4em 0}
+#thanks a{color:#a8431a;font-weight:bold}
+footer{text-align:center;padding:0 12px 28px;font-style:italic;color:#5a3414}
+</style></head><body>
+<header><div class="star">&#9733; &#9733; &#9733;</div>
+<h1>Vote for the Røise Family Intro</h1>
+<p>Give each one a listen and vote for your favorite!</p></header>
+<div id="thanks" hidden><h3>Yee-haw, thank you!</h3>
+<p id="thanksmsg">Your vote is on its way.</p>
+<p>If your email app didn't open, just email <a href="mailto:theroisefamily@gmail.com">theroisefamily@gmail.com</a> with the name of the song you picked.</p></div>
+<main>
+<section class="card" data-title="Wagon Wheels, take 1">
+<div class="num">1</div>
+<h2>Wagon Wheels, take 1</h2>
+<p class="style">Upbeat western hoedown</p>
+<audio controls preload="none" data-src="audio/wagon-wheels-take1.b64.txt"></audio>
+<details><summary>Show lyrics</summary><pre>[Intro]
+Yee-haw!
+
+[Verse]
+Whole crew on the bus and the road rolls on
+Fiddles in the back and a sunrise song
+Boots on the dash, maps in a pile
+The Røise crew is ridin&#x27; every mile
+
+[Chorus]
+Saddle up, saddle up, come along
+Wagon wheels and a family song
+Hitch your heart to the open road
+Ride with the Røise Family, here we go!
+
+[Outro]
+Yee-haw! The Røise Family!</pre></details>
+<button class="vote" type="button">Vote for this one</button>
+<div class="send" hidden>
+<label>Your name (optional)<input type="text" class="name" maxlength="80" autocomplete="name" placeholder="Your name"></label>
+<button class="sendbtn" type="button">Send my vote</button>
+</div>
+</section>
+<section class="card" data-title="Wagon Wheels, take 2">
+<div class="num">2</div>
+<h2>Wagon Wheels, take 2</h2>
+<p class="style">Upbeat western hoedown</p>
+<audio controls preload="none" data-src="audio/wagon-wheels-take2.b64.txt"></audio>
+<details><summary>Show lyrics</summary><pre>[Intro]
+Yee-haw!
+
+[Verse]
+Whole crew on the bus and the road rolls on
+Fiddles in the back and a sunrise song
+Boots on the dash, maps in a pile
+The Røise crew is ridin&#x27; every mile
+
+[Chorus]
+Saddle up, saddle up, come along
+Wagon wheels and a family song
+Hitch your heart to the open road
+Ride with the Røise Family, here we go!
+
+[Outro]
+Yee-haw! The Røise Family!</pre></details>
+<button class="vote" type="button">Vote for this one</button>
+<div class="send" hidden>
+<label>Your name (optional)<input type="text" class="name" maxlength="80" autocomplete="name" placeholder="Your name"></label>
+<button class="sendbtn" type="button">Send my vote</button>
+</div>
+</section>
+<section class="card" data-title="Follow the Journey, take 1">
+<div class="num">3</div>
+<h2>Follow the Journey, take 1</h2>
+<p class="style">Folk singalong</p>
+<audio controls preload="none" data-src="audio/follow-the-journey-take1.b64.txt"></audio>
+<details><summary>Show lyrics</summary><pre>[Verse]
+Pack the guitars and the fiddle too
+Eight kids singin&#x27; the whole way through
+Every town&#x27;s a brand new tune
+Wave hello, we&#x27;ll see you soon
+
+[Chorus]
+Follow the journey, follow along
+Hand in hand and song by song
+Big old family, open sky
+Come on with the Røise Family, ride!
+
+[Outro]
+Hey, hey, the Røise Family!</pre></details>
+<button class="vote" type="button">Vote for this one</button>
+<div class="send" hidden>
+<label>Your name (optional)<input type="text" class="name" maxlength="80" autocomplete="name" placeholder="Your name"></label>
+<button class="sendbtn" type="button">Send my vote</button>
+</div>
+</section>
+<section class="card" data-title="Follow the Journey, take 2">
+<div class="num">4</div>
+<h2>Follow the Journey, take 2</h2>
+<p class="style">Folk singalong</p>
+<audio controls preload="none" data-src="audio/follow-the-journey-take2.b64.txt"></audio>
+<details><summary>Show lyrics</summary><pre>[Verse]
+Pack the guitars and the fiddle too
+Eight kids singin&#x27; the whole way through
+Every town&#x27;s a brand new tune
+Wave hello, we&#x27;ll see you soon
+
+[Chorus]
+Follow the journey, follow along
+Hand in hand and song by song
+Big old family, open sky
+Come on with the Røise Family, ride!
+
+[Outro]
+Hey, hey, the Røise Family!</pre></details>
+<button class="vote" type="button">Vote for this one</button>
+<div class="send" hidden>
+<label>Your name (optional)<input type="text" class="name" maxlength="80" autocomplete="name" placeholder="Your name"></label>
+<button class="sendbtn" type="button">Send my vote</button>
+</div>
+</section>
+<section class="card" data-title="Roll Out, take 1">
+<div class="num">5</div>
+<h2>Roll Out, take 1</h2>
+<p class="style">Road-trip rock</p>
+<audio controls preload="none" data-src="audio/roll-out-take1.b64.txt"></audio>
+<details><summary>Show lyrics</summary><pre>[Verse]
+Engine&#x27;s hummin&#x27;, windows down
+Brand new road and a brand new town
+Dreamers, builders, music makers
+All aboard, we&#x27;re risk takers
+
+[Chorus]
+Roll out, roll out, turn it up loud
+Westward bound with a singin&#x27; crowd
+Hit subscribe and climb aboard
+It&#x27;s the Røise Family on the road!
+
+[Outro]
+Roll out! The Røise Family!</pre></details>
+<button class="vote" type="button">Vote for this one</button>
+<div class="send" hidden>
+<label>Your name (optional)<input type="text" class="name" maxlength="80" autocomplete="name" placeholder="Your name"></label>
+<button class="sendbtn" type="button">Send my vote</button>
+</div>
+</section>
+<section class="card" data-title="Roll Out, take 2">
+<div class="num">6</div>
+<h2>Roll Out, take 2</h2>
+<p class="style">Road-trip rock</p>
+<audio controls preload="none" data-src="audio/roll-out-take2.b64.txt"></audio>
+<details><summary>Show lyrics</summary><pre>[Verse]
+Engine&#x27;s hummin&#x27;, windows down
+Brand new road and a brand new town
+Dreamers, builders, music makers
+All aboard, we&#x27;re risk takers
+
+[Chorus]
+Roll out, roll out, turn it up loud
+Westward bound with a singin&#x27; crowd
+Hit subscribe and climb aboard
+It&#x27;s the Røise Family on the road!
+
+[Outro]
+Roll out! The Røise Family!</pre></details>
+<button class="vote" type="button">Vote for this one</button>
+<div class="send" hidden>
+<label>Your name (optional)<input type="text" class="name" maxlength="80" autocomplete="name" placeholder="Your name"></label>
+<button class="sendbtn" type="button">Send my vote</button>
+</div>
+</section>
+</main>
+<footer>&#9733; The Røise Family &#9733;</footer>
+<script>
+(function(){
+var TO="theroisefamily@gmail.com";
+var cards=[].slice.call(document.querySelectorAll(".card"));
+var audios=[].slice.call(document.querySelectorAll("audio"));
+audios.forEach(function(a){a.addEventListener("play",function(){audios.forEach(function(o){if(o!==a)o.pause();});});});
+cards.forEach(function(c){
+ var title=c.getAttribute("data-title");
+ var send=c.querySelector(".send");
+ c.querySelector(".vote").addEventListener("click",function(){
+  cards.forEach(function(o){o.classList.remove("picked");o.querySelector(".send").hidden=true;});
+  c.classList.add("picked");send.hidden=false;
+  var n=send.querySelector(".name");setTimeout(function(){try{n.focus({preventScroll:true});}catch(e){}},50);
+  send.scrollIntoView({behavior:"smooth",block:"center"});
+ });
+ c.querySelector(".sendbtn").addEventListener("click",function(){
+  var name=c.querySelector(".name").value.trim();
+  var subject="Intro vote: "+title;
+  var body="I vote for: "+title+"\nName: "+name;
+  audios.forEach(function(a){a.pause();});
+  var url="mailto:"+TO+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
+  document.getElementById("thanksmsg").textContent="You voted for "+title+". Your vote is on its way.";
+  document.getElementById("thanks").hidden=false;
+  send.hidden=true;
+  window.scrollTo({top:0,behavior:"smooth"});
+  window.location.href=url;
+ });
+});
+})();
+</script>
+<script>
+(function(){
+function b64ToBlobUrl(b64){var bin=atob(b64.trim());var len=bin.length;var u=new Uint8Array(len);for(var i=0;i<len;i++)u[i]=bin.charCodeAt(i);return URL.createObjectURL(new Blob([u],{type:"audio/mpeg"}));}
+[].slice.call(document.querySelectorAll("audio[data-src]")).forEach(function(a){
+ fetch(a.getAttribute("data-src")).then(function(r){if(!r.ok)throw new Error(r.status);return r.text();}).then(function(t){a.src=b64ToBlobUrl(t);}).catch(function(e){var p=document.createElement("p");p.textContent="Audio failed to load - please refresh.";a.parentNode.insertBefore(p,a.nextSibling);});
+});
+})();
+</script>
+</body></html>
