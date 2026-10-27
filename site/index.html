@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vote for the Røise Family Intro</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,"Palatino Linotype",Palatino,"Book Antiqua",serif;color:#0c2236;
+background:#bfe3ef repeating-linear-gradient(90deg,rgba(15,45,74,.08) 0 2px,transparent 2px 46px),linear-gradient(#d6f0f7,#8fcbdc);min-height:100vh}
+header{text-align:center;padding:28px 16px 8px;background:#0f2d4a;border-bottom:6px double #ffb347;color:#e8f6ff;
+box-shadow:0 4px 12px rgba(0,0,0,.35)}
+h1{margin:0;font-family:Rockwell,"Rockwell Extra Bold","Copperplate Gothic Bold","Clarendon","Bookman Old Style","Georgia",serif;
+font-size:clamp(1.8rem,7vw,3rem);letter-spacing:.04em;text-transform:uppercase;text-shadow:2px 2px 0 #061726;color:#ffd66b}
+.star{color:#ffb347;letter-spacing:.5em;font-size:1rem}
+header p{font-style:italic;font-size:1.1rem;margin:.4em 0 1em}
+main{max-width:720px;margin:0 auto;padding:18px 14px 40px;display:grid;gap:18px}
+.card{position:relative;background:#fbfeff;border:3px solid #1d5f7a;border-radius:10px;padding:18px 16px 16px 16px;
+box-shadow:0 0 0 3px #fbfeff,0 0 0 5px #1d5f7a,0 6px 14px rgba(0,0,0,.3)}
+.card.picked{background:#fff1c9;border-color:#e0562d;box-shadow:0 0 0 3px #fff1c9,0 0 0 6px #e0562d,0 6px 14px rgba(0,0,0,.3)}
+.num{position:absolute;top:-14px;left:-10px;width:38px;height:38px;border-radius:50%;background:#e0562d;color:#fff1c9;
+font:bold 1.2rem Georgia,serif;display:flex;align-items:center;justify-content:center;border:3px solid #fbfeff;box-shadow:0 2px 4px rgba(0,0,0,.4)}
+h2{margin:0 0 2px 22px;font-family:Rockwell,"Clarendon","Bookman Old Style",Georgia,serif;font-size:1.45rem;color:#0f2d4a}
+.style{margin:0 0 12px 22px;font-style:italic;color:#2b6f8c}
+audio{width:100%;margin:4px 0 10px}
+details{margin-bottom:12px}
+summary{cursor:pointer;color:#2b6f8c;font-weight:bold}
+pre{white-space:pre-wrap;font-family:inherit;background:#e0f3f8;border-left:4px solid #e0562d;padding:10px 12px;margin:8px 0 0;border-radius:4px}
+button{font-family:Rockwell,"Clarendon","Bookman Old Style",Georgia,serif;cursor:pointer;border-radius:8px;font-weight:bold}
+.vote{width:100%;padding:16px;font-size:1.25rem;background:#e0562d;color:#fff1c9;border:3px solid #8f2c10;
+text-transform:uppercase;letter-spacing:.05em;box-shadow:0 4px 0 #8f2c10}
+.vote:active{transform:translateY(3px);box-shadow:0 1px 0 #8f2c10}
+.send{margin-top:14px;padding:12px;background:#e0f3f8;border:2px dashed #1d5f7a;border-radius:8px}
+.send[hidden],#thanks[hidden]{display:none}
+label{display:block;font-weight:bold;margin-bottom:10px}
+input{display:block;width:100%;margin-top:4px;padding:12px;font-size:1rem;font-family:inherit;border:2px solid #1d5f7a;border-radius:6px;background:#ffffff}
+.sendbtn{width:100%;padding:14px;font-size:1.15rem;background:#12805c;color:#fff;border:3px solid #0a5a3f;box-shadow:0 3px 0 #0a5a3f}
+#thanks{max-width:720px;margin:18px auto 0;padding:20px;background:#fff1c9;border:3px solid #12805c;border-radius:10px;text-align:center;font-size:1.15rem}
+#thanks h3{margin:0 0 6px;font-family:Rockwell,Georgia,serif;font-size:1.6rem;color:#12805c}
+#thanks p{margin:.4em 0}
+#thanks a{color:#e0562d;font-weight:bold}
+footer{text-align:center;padding:0 12px 28px;font-style:italic;color:#0f2d4a}
+.badge{display:inline-block;margin:0 0 8px 22px;padding:3px 10px;border-radius:999px;font:bold .8rem Georgia,serif;letter-spacing:.06em;text-transform:uppercase}
+.badge.orig{background:#6b7280;color:#fff}
+.badge.new{background:#12805c;color:#fff}
+.card.isnew{border-color:#12805c;box-shadow:0 0 0 3px #fbfeff,0 0 0 5px #12805c,0 6px 14px rgba(0,0,0,.3)}
+.card.isorig{border-style:dashed}
+.card.picked{border-style:solid}
+.card.isnew.picked{border-color:#e0562d;box-shadow:0 0 0 3px #fff1c9,0 0 0 6px #e0562d,0 6px 14px rgba(0,0,0,.3)}
+.note{max-width:720px;margin:14px auto 0;padding:10px 14px;background:#fff1c9;border:2px solid #e0562d;border-radius:8px;text-align:center}
+.board{max-width:720px;margin:18px auto 0;padding:14px 16px;background:#fbfeff;border:3px solid #1d5f7a;border-radius:10px;box-shadow:0 0 0 3px #fbfeff,0 0 0 5px #1d5f7a}
+.board h3{margin:0 0 8px;font-family:Rockwell,Georgia,serif;color:#0f2d4a}
+.board h3 span{font-size:.9rem;font-weight:normal;color:#2b6f8c}
+.board ol{list-style:none;margin:0;padding:0}
+.board li{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:4px 0;font-size:.95rem}
+.board li .b{grid-column:1/3;height:8px;background:#e0f3f8;border-radius:6px;overflow:hidden}
+.board li .b i{display:block;height:100%;background:#e0562d;border-radius:6px}
+.board li strong{color:#0f2d4a}
+.tally{margin:0 0 10px;display:flex;align-items:center;gap:10px;font-weight:bold;color:#0f2d4a}
+.tally .b{flex:1;height:10px;background:#e0f3f8;border-radius:6px;overflow:hidden}
+.tally .b i{display:block;height:100%;width:0;background:#e0562d;border-radius:6px;transition:width .4s}
+.tally .yours{color:#12805c;font-size:.85rem;text-transform:uppercase;letter-spacing:.05em}
+.err{color:#8f2c10;font-weight:bold;margin:8px 0 0}
+</style></head><body>
+<header><div class="star">&#9733; &#9733; &#9733;</div>
+<h1>Vote for the Røise Family Intro</h1>
+<p>Give each one a listen and vote for your favorite! Options 7&ndash;10 are NEW &ndash; Royce country hip-hop versions.</p></header>
+<div id="thanks" hidden><h3>Yee-haw, thank you!</h3>
+<p id="thanksmsg">Your vote is in.</p>
+<p>Tap another option any time to change your vote.</p></div>
+<section id="board" class="board"><h3>Live results <span id="boardtotal"></span></h3><ol id="boardlist"><li>Loading&hellip;</li></ol></section>
+<main>
+<section class="card" data-title="Wagon Wheels, take 1">
+<div class="num">1</div>
+<h2>Wagon Wheels, take 1</h2>
+<p class="style">Upbeat western hoedown</p>
+<div class="tally" data-opt="1"><span class="cnt">0 votes</span><span class="b"><i></i></span><span class="yours"></span></div>
+<audio controls preload="none" src="/audio/wagon-wheels-take1.mp3"></audio>
+<details><summary>Show lyrics</summary><pre>[Intro]
+Yee-haw!
+
+[Verse]
+Whole crew on the bus and the road rolls on
+Fiddles in the back and a sunrise song
+Boots on the dash, maps in a pile
+The Røise crew is ridin&#x27; every mile
+
+[Chorus]
+Saddle up, saddle up, come along
+Wagon wheels and a family song
+Hitch your heart to the open road
+Ride with the Røise Family, here we go!
+
+[Outro]
+Yee-haw! The Røise Family!</pre></details>
+<button class="vote" type="button">Vote for this one</button>
+<div class="send" hidden>
+<label>Your name (optional)<input type="text" class="name" maxlength="80" autocomplete="name" placeholder="Your name"></label>
+<button class="sendbtn" type="button">Submit my vote</button>
+</div>
+</section>
+<section class="card" data-title="Wagon Wheels, take 2">
+<div class="num">2</div>
+<h2>Wagon Wheels, take 2</h2>
+<p class="style">Upbeat western hoedown</p>
+<div class="tally" data-opt="2"><span class="cnt">0 votes</span><span class="b"><i></i></span><span class="yours"></span></div>
+<audio controls preload="none" src="/audio/wagon-wheels-take2.mp3"></audio>
+<details><summary>Show lyrics</summary><pre>[Intro]
+Yee-haw!
+
+[Verse]
+Whole crew on the bus and the road rolls on
+Fiddles in the back and a sunrise song
+Boots on the dash, maps in a pile
+The Røise crew is ridin&#x27; every mile
+
+[Chorus]
+Saddle up, saddle up, come along
+Wagon wheels and a family song
+Hitch your heart to the open road
+Ride with the Røise Family, here we go!
+
+[Outro]
+Yee-haw! The Røise Family!</pre></details>
+<button class="vote" type="button">Vote for this one</button>
+<div class="send" hidden>
+<label>Your name (optional)<input type="text" class="name" maxlength="80" autocomplete="name" placeholder="Your name"></label>
+<button class="sendbtn" type="button">Submit my vote</button>
+</div>
+</section>
+<section class="card isorig" data-title="Follow the Journey, take 1">
+<div class="num">3</div>
+<h2>Follow the Journey, take 1</h2>
+<span class="badge orig">Original</span>
+<p class="style">Folk singalong</p>
+<div class="tally" data-opt="3"><span class="cnt">0 votes</span><span class="b"><i></i></span><span class="yours"></span></div>
+<audio controls preload="none" src="/audio/follow-the-journey-take1.mp3"></audio>
+<details><summary>Show lyrics</summary><pre>[Verse]
+Pack the guitars and the fiddle too
+Eight kids singin&#x27; the whole way through
+Every town&#x27;s a brand new tune
+Wave hello, we&#x27;ll see you soon
+
+[Chorus]
+Follow the journey, follow along
+Hand in hand and song by song
+Big old family, open sky
+Come on with the Røise Family, ride!
+
+[Outro]
+Hey, hey, the Røise Family!</pre></details>
+<button class="vote" type="button">Vote for this one</button>
+<div class="send" hidden>
+<label>Your name (optional)<input type="text" class="name" maxlength="80" autocomplete="name" placeholder="Your name"></label>
+<button class="sendbtn" type="button">Submit my vote</button>
+</div>
+</section>
+<section class="card isorig" data-title="Follow the Journey, take 2">
+<div class="num">4</div>
+<h2>Follow the Journey, take 2</h2>
+<span class="badge orig">Original</span>
+<p class="style">Folk singalong</p>
+<div class="tally" data-opt="4"><span class="cnt">0 votes</span><span class="b"><i></i></span><span class="yours"></span></div>
+<audio controls preload="none" src="/audio/follow-the-journey-take2.mp3"></audio>
+<details><summary>Show lyrics</summary><pre>[Verse]
+Pack the guitars and the fiddle too
+Eight kids singin&#x27; the whole way through
+Every town&#x27;s a brand new tune
+Wave hello, we&#x27;ll see you soon
+
+[Chorus]
+Follow the journey, follow along
+Hand in hand and song by song
+Big old family, open sky
+Come on with the Røise Family, ride!
+
+[Outro]
+Hey, hey, the Røise Family!</pre></details>
+<button class="vote" type="button">Vote for this one</button>
+<div class="send" hidden>
+<label>Your name (optional)<input type="text" class="name" maxlength="80" autocomplete="name" placeholder="Your name"></label>
+<button class="sendbtn" type="button">Submit my vote</button>
+</div>
+</section>
+<section class="card isorig" data-title="Roll Out, take 1">
+<div class="num">5</div>
+<h2>Roll Out, take 1</h2>
+<span class="badge orig">Original</span>
+<p class="style">Road-trip rock</p>
+<div class="tally" data-opt="5"><span class="cnt">0 votes</span><span class="b"><i></i></span><span class="yours"></span></div>
+<audio controls preload="none" src="/audio/roll-out-take1.mp3"></audio>
+<details><summary>Show lyrics</summary><pre>[Verse]
+Engine&#x27;s hummin&#x27;, windows down
+Brand new road and a brand new town
+Dreamers, builders, music makers
+All aboard, we&#x27;re risk takers
+
+[Chorus]
+Roll out, roll out, turn it up loud
+Westward bound with a singin&#x27; crowd
+Hit subscribe and climb aboard
+It&#x27;s the Røise Family on the road!
+
+[Outro]
+Roll out! The Røise Family!</pre></details>
+<button class="vote" type="button">Vote for this one</button>
+<div class="send" hidden>
+<label>Your name (optional)<input type="text" class="name" maxlength="80" autocomplete="name" placeholder="Your name"></label>
+<button class="sendbtn" type="button">Submit my vote</button>
+</div>
+</section>
+<section class="card isorig" data-title="Roll Out, take 2">
+<div class="num">6</div>
+<h2>Roll Out, take 2</h2>
+<span class="badge orig">Original</span>
+<p class="style">Road-trip rock</p>
+<div class="tally" data-opt="6"><span class="cnt">0 votes</span><span class="b"><i></i></span><span class="yours"></span></div>
+<audio controls preload="none" src="/audio/roll-out-take2.mp3"></audio>
+<details><summary>Show lyrics</summary><pre>[Verse]
+Engine&#x27;s hummin&#x27;, windows down
+Brand new road and a brand new town
+Dreamers, builders, music makers
+All aboard, we&#x27;re risk takers
+
+[Chorus]
+Roll out, roll out, turn it up loud
+Westward bound with a singin&#x27; crowd
+Hit subscribe and climb aboard
+It&#x27;s the Røise Family on the road!
+
+[Outro]
+Roll out! The Røise Family!</pre></details>
+<button class="vote" type="button">Vote for this one</button>
+<div class="send" hidden>
+<label>Your name (optional)<input type="text" class="name" maxlength="80" autocomplete="name" placeholder="Your name"></label>
+<button class="sendbtn" type="button">Submit my vote</button>
+</div>
+</section>
+<section class="card isnew" data-title="Follow the Journey, country hip-hop take 1">
+<div class="num">7</div>
+<h2>Follow the Journey, country hip-hop take 1</h2>
+<span class="badge new">New &ndash; Royce</span>
+<p class="style">NEW: country hip-hop, Shaboozy-style</p>
+<div class="tally" data-opt="7"><span class="cnt">0 votes</span><span class="b"><i></i></span><span class="yours"></span></div>
+<audio controls preload="none" src="/audio/follow-the-journey-v2-take1.mp3"></audio>
+<details><summary>Show lyrics</summary><pre>[Verse]
+Pack the guitars and the fiddle too
+Eight kids singin&#x27; the whole way through
+Every town&#x27;s a brand new tune
+Wave hello, we&#x27;ll see you soon
+
+[Chorus]
+Follow the journey, follow along
+Hand in hand and song by song
+Big old family, open sky
+Come on with the Royce Family, ride!
+
+[Outro]
+Hey, hey, the Royce Family!</pre></details>
+<button class="vote" type="button">Vote for this one</button>
+<div class="send" hidden>
+<label>Your name (optional)<input type="text" class="name" maxlength="80" autocomplete="name" placeholder="Your name"></label>
+<button class="sendbtn" type="button">Submit my vote</button>
+</div>
+</section>
+<section class="card isnew" data-title="Follow the Journey, country hip-hop take 2">
+<div class="num">8</div>
+<h2>Follow the Journey, country hip-hop take 2</h2>
+<span class="badge new">New &ndash; Royce</span>
+<p class="style">NEW: country hip-hop, Shaboozy-style</p>
+<div class="tally" data-opt="8"><span class="cnt">0 votes</span><span class="b"><i></i></span><span class="yours"></span></div>
+<audio controls preload="none" src="/audio/follow-the-journey-v2-take2.mp3"></audio>
+<details><summary>Show lyrics</summary><pre>[Verse]
+Pack the guitars and the fiddle too
+Eight kids singin&#x27; the whole way through
+Every town&#x27;s a brand new tune
+Wave hello, we&#x27;ll see you soon
+
+[Chorus]
+Follow the journey, follow along
+Hand in hand and song by song
+Big old family, open sky
+Come on with the Royce Family, ride!
+
+[Outro]
+Hey, hey, the Royce Family!</pre></details>
+<button class="vote" type="button">Vote for this one</button>
+<div class="send" hidden>
+<label>Your name (optional)<input type="text" class="name" maxlength="80" autocomplete="name" placeholder="Your name"></label>
+<button class="sendbtn" type="button">Submit my vote</button>
+</div>
+</section>
+<section class="card isnew" data-title="Roll Out, country hip-hop take 1">
+<div class="num">9</div>
+<h2>Roll Out, country hip-hop take 1</h2>
+<span class="badge new">New &ndash; Royce</span>
+<p class="style">NEW: country hip-hop, Shaboozy-style</p>
+<div class="tally" data-opt="9"><span class="cnt">0 votes</span><span class="b"><i></i></span><span class="yours"></span></div>
+<audio controls preload="none" src="/audio/roll-out-v2-take1.mp3"></audio>
+<details><summary>Show lyrics</summary><pre>[Verse]
+Engine&#x27;s hummin&#x27;, windows down
+Brand new road and a brand new town
+Dreamers, builders, music makers
+All aboard, we&#x27;re risk takers
+
+[Chorus]
+Roll out, roll out, turn it up loud
+Westward bound with a singin&#x27; crowd
+Hit subscribe and climb aboard
+It&#x27;s the Royce Family on the road!
+
+[Outro]
+Roll out! The Royce Family!</pre></details>
+<button class="vote" type="button">Vote for this one</button>
+<div class="send" hidden>
+<label>Your name (optional)<input type="text" class="name" maxlength="80" autocomplete="name" placeholder="Your name"></label>
+<button class="sendbtn" type="button">Submit my vote</button>
+</div>
+</section>
+<section class="card isnew" data-title="Roll Out, country hip-hop take 2">
+<div class="num">10</div>
+<h2>Roll Out, country hip-hop take 2</h2>
+<span class="badge new">New &ndash; Royce</span>
+<p class="style">NEW: country hip-hop, Shaboozy-style</p>
+<div class="tally" data-opt="10"><span class="cnt">0 votes</span><span class="b"><i></i></span><span class="yours"></span></div>
+<audio controls preload="none" src="/audio/roll-out-v2-take2.mp3"></audio>
+<details><summary>Show lyrics</summary><pre>[Verse]
+Engine&#x27;s hummin&#x27;, windows down
+Brand new road and a brand new town
+Dreamers, builders, music makers
+All aboard, we&#x27;re risk takers
+
+[Chorus]
+Roll out, roll out, turn it up loud
+Westward bound with a singin&#x27; crowd
+Hit subscribe and climb aboard
+It&#x27;s the Royce Family on the road!
+
+[Outro]
+Roll out! The Royce Family!</pre></details>
+<button class="vote" type="button">Vote for this one</button>
+<div class="send" hidden>
+<label>Your name (optional)<input type="text" class="name" maxlength="80" autocomplete="name" placeholder="Your name"></label>
+<button class="sendbtn" type="button">Submit my vote</button>
+</div>
+</section>
+</main>
+<footer>&#9733; The Røise Family &#9733;</footer>
+<script>
+(function(){
+var cards=[].slice.call(document.querySelectorAll(".card"));
+var audios=[].slice.call(document.querySelectorAll("audio"));
+audios.forEach(function(a){a.addEventListener("play",function(){audios.forEach(function(o){if(o!==a)o.pause();});});});
+var TITLES={};cards.forEach(function(c){TITLES[+c.querySelector(".num").textContent]=c.getAttribute("data-title");});
+function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+var vid=lsGet("roise_voter_id");
+if(!vid){vid=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():("v"+Date.now().toString(36)+Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2));lsSet("roise_voter_id",vid);}
+var myVote=parseInt(lsGet("roise_my_vote")||"0",10)||0;
+var myName=lsGet("roise_my_name")||"";
+function plural(n){return n+(n===1?" vote":" votes");}
+function render(d){
+ if(!d||!d.counts)return;
+ var max=1;for(var i=1;i<=10;i++)max=Math.max(max,d.counts[i]||0);
+ cards.forEach(function(c){
+  var n=+c.querySelector(".num").textContent;var t=c.querySelector(".tally");
+  t.querySelector(".cnt").textContent=plural(d.counts[n]||0);
+  t.querySelector(".b i").style.width=Math.round((d.counts[n]||0)/max*100)+"%";
+  t.querySelector(".yours").textContent=(myVote===n)?"\u2713 Your vote":"";
+  var vb=c.querySelector(".vote");vb.textContent=myVote?(myVote===n?"Your vote":"Change my vote to this one"):"Vote for this one";
+ });
+ var order=[];for(var j=1;j<=10;j++)order.push(j);
+ order.sort(function(a,b){return (d.counts[b]||0)-(d.counts[a]||0)||a-b;});
+ var ol=document.getElementById("boardlist");ol.innerHTML="";
+ order.forEach(function(n){var li=document.createElement("li");
+  var s=document.createElement("span");s.innerHTML="<strong>#"+n+"</strong> ";s.appendChild(document.createTextNode(TITLES[n]));
+  var r=document.createElement("span");r.textContent=plural(d.counts[n]||0);
+  var b=document.createElement("span");b.className="b";var i2=document.createElement("i");i2.style.width=Math.round((d.counts[n]||0)/max*100)+"%";b.appendChild(i2);
+  li.appendChild(s);li.appendChild(r);li.appendChild(b);ol.appendChild(li);});
+ document.getElementById("boardtotal").textContent="("+d.total+" total)";
+}
+function load(){fetch("/api/results",{cache:"no-store"}).then(function(r){return r.json();}).then(render).catch(function(){});}
+load();setInterval(load,15000);
+cards.forEach(function(c){
+ var num=+c.querySelector(".num").textContent;
+ var title=c.getAttribute("data-title");
+ var send=c.querySelector(".send");
+ var nameIn=send.querySelector(".name");
+ var err=document.createElement("p");err.className="err";err.hidden=true;send.appendChild(err);
+ c.querySelector(".vote").addEventListener("click",function(){
+  cards.forEach(function(o){o.classList.remove("picked");o.querySelector(".send").hidden=true;});
+  c.classList.add("picked");send.hidden=false;err.hidden=true;
+  if(!nameIn.value)nameIn.value=myName;
+  setTimeout(function(){try{nameIn.focus({preventScroll:true});}catch(e){}},50);
+  send.scrollIntoView({behavior:"smooth",block:"center"});
+ });
+ var btn=c.querySelector(".sendbtn");
+ btn.addEventListener("click",function(){
+  var name=nameIn.value.trim();
+  btn.disabled=true;err.hidden=true;
+  fetch("/api/vote",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({option:num,voter_id:vid,name:name})})
+  .then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
+  .then(function(x){
+   btn.disabled=false;
+   if(!x.ok){err.textContent=(x.d&&x.d.error)||"Something went wrong. Please try again.";err.hidden=false;return;}
+   myVote=num;myName=name;lsSet("roise_my_vote",String(num));lsSet("roise_my_name",name);
+   audios.forEach(function(a){a.pause();});
+   document.getElementById("thanksmsg").textContent=(x.d.changed?"Vote changed! You now vote for ":"You voted for ")+title+".";
+   document.getElementById("thanks").hidden=false;
+   send.hidden=true;c.classList.remove("picked");
+   render(x.d);
+   window.scrollTo({top:0,behavior:"smooth"});
+  }).catch(function(){btn.disabled=false;err.textContent="Couldn't reach the server. Please try again.";err.hidden=false;});
+ });
+});
+})();
+</script>
+<script>
+(function(){
+function b64ToBlobUrl(b64){var bin=atob(b64.trim());var len=bin.length;var u=new Uint8Array(len);for(var i=0;i<len;i++)u[i]=bin.charCodeAt(i);return URL.createObjectURL(new Blob([u],{type:"audio/mpeg"}));}
+[].slice.call(document.querySelectorAll("audio[data-src]")).forEach(function(a){
+ fetch(a.getAttribute("data-src")).then(function(r){if(!r.ok)throw new Error(r.status);return r.text();}).then(function(t){a.src=b64ToBlobUrl(t);}).catch(function(e){var p=document.createElement("p");p.textContent="Audio failed to load - please refresh.";a.parentNode.insertBefore(p,a.nextSibling);});
+});
+})();
+</script>
+</body></html>

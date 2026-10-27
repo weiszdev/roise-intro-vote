@@ -1,0 +1,3 @@
+CREATE TABLE IF NOT EXISTS votes (voter_id TEXT PRIMARY KEY, option_id INTEGER NOT NULL, name TEXT, created_at INTEGER NOT NULL, updated_at INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS rate (ip_hash TEXT NOT NULL, ts INTEGER NOT NULL);
+CREATE INDEX IF NOT EXISTS rate_idx ON rate(ip_hash, ts);
