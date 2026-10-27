@@ -4,44 +4,52 @@
 <title>Vote for the Røise Family Intro</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Georgia,"Palatino Linotype",Palatino,"Book Antiqua",serif;color:#3b2412;
-background:#d9b98a repeating-linear-gradient(90deg,rgba(90,52,20,.07) 0 2px,transparent 2px 46px),linear-gradient(#e6cba0,#c99c63);min-height:100vh}
-header{text-align:center;padding:28px 16px 8px;background:#5a3414;border-bottom:6px double #e2b660;color:#f6e3bd;
+body{margin:0;font-family:Georgia,"Palatino Linotype",Palatino,"Book Antiqua",serif;color:#0c2236;
+background:#bfe3ef repeating-linear-gradient(90deg,rgba(15,45,74,.08) 0 2px,transparent 2px 46px),linear-gradient(#d6f0f7,#8fcbdc);min-height:100vh}
+header{text-align:center;padding:28px 16px 8px;background:#0f2d4a;border-bottom:6px double #ffb347;color:#e8f6ff;
 box-shadow:0 4px 12px rgba(0,0,0,.35)}
 h1{margin:0;font-family:Rockwell,"Rockwell Extra Bold","Copperplate Gothic Bold","Clarendon","Bookman Old Style","Georgia",serif;
-font-size:clamp(1.8rem,7vw,3rem);letter-spacing:.04em;text-transform:uppercase;text-shadow:2px 2px 0 #2b170a;color:#f6d98c}
-.star{color:#e2b660;letter-spacing:.5em;font-size:1rem}
+font-size:clamp(1.8rem,7vw,3rem);letter-spacing:.04em;text-transform:uppercase;text-shadow:2px 2px 0 #061726;color:#ffd66b}
+.star{color:#ffb347;letter-spacing:.5em;font-size:1rem}
 header p{font-style:italic;font-size:1.1rem;margin:.4em 0 1em}
 main{max-width:720px;margin:0 auto;padding:18px 14px 40px;display:grid;gap:18px}
-.card{position:relative;background:#f7ead0;border:3px solid #6b4020;border-radius:10px;padding:18px 16px 16px 16px;
-box-shadow:0 0 0 3px #f7ead0,0 0 0 5px #6b4020,0 6px 14px rgba(0,0,0,.3)}
-.card.picked{background:#fff3c4;border-color:#a8431a;box-shadow:0 0 0 3px #fff3c4,0 0 0 6px #a8431a,0 6px 14px rgba(0,0,0,.3)}
-.num{position:absolute;top:-14px;left:-10px;width:38px;height:38px;border-radius:50%;background:#a8431a;color:#fff3c4;
-font:bold 1.2rem Georgia,serif;display:flex;align-items:center;justify-content:center;border:3px solid #f7ead0;box-shadow:0 2px 4px rgba(0,0,0,.4)}
-h2{margin:0 0 2px 22px;font-family:Rockwell,"Clarendon","Bookman Old Style",Georgia,serif;font-size:1.45rem;color:#4a2a12}
-.style{margin:0 0 12px 22px;font-style:italic;color:#7a4a22}
+.card{position:relative;background:#fbfeff;border:3px solid #1d5f7a;border-radius:10px;padding:18px 16px 16px 16px;
+box-shadow:0 0 0 3px #fbfeff,0 0 0 5px #1d5f7a,0 6px 14px rgba(0,0,0,.3)}
+.card.picked{background:#fff1c9;border-color:#e0562d;box-shadow:0 0 0 3px #fff1c9,0 0 0 6px #e0562d,0 6px 14px rgba(0,0,0,.3)}
+.num{position:absolute;top:-14px;left:-10px;width:38px;height:38px;border-radius:50%;background:#e0562d;color:#fff1c9;
+font:bold 1.2rem Georgia,serif;display:flex;align-items:center;justify-content:center;border:3px solid #fbfeff;box-shadow:0 2px 4px rgba(0,0,0,.4)}
+h2{margin:0 0 2px 22px;font-family:Rockwell,"Clarendon","Bookman Old Style",Georgia,serif;font-size:1.45rem;color:#0f2d4a}
+.style{margin:0 0 12px 22px;font-style:italic;color:#2b6f8c}
 audio{width:100%;margin:4px 0 10px}
 details{margin-bottom:12px}
-summary{cursor:pointer;color:#7a4a22;font-weight:bold}
-pre{white-space:pre-wrap;font-family:inherit;background:#efdcb6;border-left:4px solid #a8431a;padding:10px 12px;margin:8px 0 0;border-radius:4px}
+summary{cursor:pointer;color:#2b6f8c;font-weight:bold}
+pre{white-space:pre-wrap;font-family:inherit;background:#e0f3f8;border-left:4px solid #e0562d;padding:10px 12px;margin:8px 0 0;border-radius:4px}
 button{font-family:Rockwell,"Clarendon","Bookman Old Style",Georgia,serif;cursor:pointer;border-radius:8px;font-weight:bold}
-.vote{width:100%;padding:16px;font-size:1.25rem;background:#a8431a;color:#fff3c4;border:3px solid #6b2a0e;
-text-transform:uppercase;letter-spacing:.05em;box-shadow:0 4px 0 #6b2a0e}
-.vote:active{transform:translateY(3px);box-shadow:0 1px 0 #6b2a0e}
-.send{margin-top:14px;padding:12px;background:#efdcb6;border:2px dashed #6b4020;border-radius:8px}
+.vote{width:100%;padding:16px;font-size:1.25rem;background:#e0562d;color:#fff1c9;border:3px solid #8f2c10;
+text-transform:uppercase;letter-spacing:.05em;box-shadow:0 4px 0 #8f2c10}
+.vote:active{transform:translateY(3px);box-shadow:0 1px 0 #8f2c10}
+.send{margin-top:14px;padding:12px;background:#e0f3f8;border:2px dashed #1d5f7a;border-radius:8px}
 .send[hidden],#thanks[hidden]{display:none}
 label{display:block;font-weight:bold;margin-bottom:10px}
-input{display:block;width:100%;margin-top:4px;padding:12px;font-size:1rem;font-family:inherit;border:2px solid #6b4020;border-radius:6px;background:#fffaf0}
-.sendbtn{width:100%;padding:14px;font-size:1.15rem;background:#2f6b2f;color:#fff;border:3px solid #1c4a1c;box-shadow:0 3px 0 #1c4a1c}
-#thanks{max-width:720px;margin:18px auto 0;padding:20px;background:#fff3c4;border:3px solid #2f6b2f;border-radius:10px;text-align:center;font-size:1.15rem}
-#thanks h3{margin:0 0 6px;font-family:Rockwell,Georgia,serif;font-size:1.6rem;color:#2f6b2f}
+input{display:block;width:100%;margin-top:4px;padding:12px;font-size:1rem;font-family:inherit;border:2px solid #1d5f7a;border-radius:6px;background:#ffffff}
+.sendbtn{width:100%;padding:14px;font-size:1.15rem;background:#12805c;color:#fff;border:3px solid #0a5a3f;box-shadow:0 3px 0 #0a5a3f}
+#thanks{max-width:720px;margin:18px auto 0;padding:20px;background:#fff1c9;border:3px solid #12805c;border-radius:10px;text-align:center;font-size:1.15rem}
+#thanks h3{margin:0 0 6px;font-family:Rockwell,Georgia,serif;font-size:1.6rem;color:#12805c}
 #thanks p{margin:.4em 0}
-#thanks a{color:#a8431a;font-weight:bold}
-footer{text-align:center;padding:0 12px 28px;font-style:italic;color:#5a3414}
+#thanks a{color:#e0562d;font-weight:bold}
+footer{text-align:center;padding:0 12px 28px;font-style:italic;color:#0f2d4a}
+.badge{display:inline-block;margin:0 0 8px 22px;padding:3px 10px;border-radius:999px;font:bold .8rem Georgia,serif;letter-spacing:.06em;text-transform:uppercase}
+.badge.orig{background:#6b7280;color:#fff}
+.badge.new{background:#12805c;color:#fff}
+.card.isnew{border-color:#12805c;box-shadow:0 0 0 3px #fbfeff,0 0 0 5px #12805c,0 6px 14px rgba(0,0,0,.3)}
+.card.isorig{border-style:dashed}
+.card.picked{border-style:solid}
+.card.isnew.picked{border-color:#e0562d;box-shadow:0 0 0 3px #fff1c9,0 0 0 6px #e0562d,0 6px 14px rgba(0,0,0,.3)}
+.note{max-width:720px;margin:14px auto 0;padding:10px 14px;background:#fff1c9;border:2px solid #e0562d;border-radius:8px;text-align:center}
 </style></head><body>
 <header><div class="star">&#9733; &#9733; &#9733;</div>
 <h1>Vote for the Røise Family Intro</h1>
-<p>Give each one a listen and vote for your favorite! Options 7&ndash;10 are the new country hip-hop versions.</p></header>
+<p>Give each one a listen and vote for your favorite! Options 7&ndash;10 are NEW &ndash; Royce country hip-hop versions.</p></header>
 <div id="thanks" hidden><h3>Yee-haw, thank you!</h3>
 <p id="thanksmsg">Your vote is on its way.</p>
 <p>If your email app didn't open, just email <a href="mailto:theroisefamily@gmail.com">theroisefamily@gmail.com</a> with the name of the song you picked.</p></div>
@@ -102,9 +110,10 @@ Yee-haw! The Røise Family!</pre></details>
 <button class="sendbtn" type="button">Send my vote</button>
 </div>
 </section>
-<section class="card" data-title="Follow the Journey, take 1">
+<section class="card isorig" data-title="Follow the Journey, take 1">
 <div class="num">3</div>
 <h2>Follow the Journey, take 1</h2>
+<span class="badge orig">Original</span>
 <p class="style">Folk singalong</p>
 <audio controls preload="none" data-src="audio/follow-the-journey-take1.b64.txt"></audio>
 <details><summary>Show lyrics</summary><pre>[Verse]
@@ -127,9 +136,10 @@ Hey, hey, the Røise Family!</pre></details>
 <button class="sendbtn" type="button">Send my vote</button>
 </div>
 </section>
-<section class="card" data-title="Follow the Journey, take 2">
+<section class="card isorig" data-title="Follow the Journey, take 2">
 <div class="num">4</div>
 <h2>Follow the Journey, take 2</h2>
+<span class="badge orig">Original</span>
 <p class="style">Folk singalong</p>
 <audio controls preload="none" data-src="audio/follow-the-journey-take2.b64.txt"></audio>
 <details><summary>Show lyrics</summary><pre>[Verse]
@@ -152,9 +162,10 @@ Hey, hey, the Røise Family!</pre></details>
 <button class="sendbtn" type="button">Send my vote</button>
 </div>
 </section>
-<section class="card" data-title="Roll Out, take 1">
+<section class="card isorig" data-title="Roll Out, take 1">
 <div class="num">5</div>
 <h2>Roll Out, take 1</h2>
+<span class="badge orig">Original</span>
 <p class="style">Road-trip rock</p>
 <audio controls preload="none" data-src="audio/roll-out-take1.b64.txt"></audio>
 <details><summary>Show lyrics</summary><pre>[Verse]
@@ -177,9 +188,10 @@ Roll out! The Røise Family!</pre></details>
 <button class="sendbtn" type="button">Send my vote</button>
 </div>
 </section>
-<section class="card" data-title="Roll Out, take 2">
+<section class="card isorig" data-title="Roll Out, take 2">
 <div class="num">6</div>
 <h2>Roll Out, take 2</h2>
+<span class="badge orig">Original</span>
 <p class="style">Road-trip rock</p>
 <audio controls preload="none" data-src="audio/roll-out-take2.b64.txt"></audio>
 <details><summary>Show lyrics</summary><pre>[Verse]
@@ -202,9 +214,10 @@ Roll out! The Røise Family!</pre></details>
 <button class="sendbtn" type="button">Send my vote</button>
 </div>
 </section>
-<section class="card" data-title="Follow the Journey, country hip-hop take 1">
+<section class="card isnew" data-title="Follow the Journey, country hip-hop take 1">
 <div class="num">7</div>
 <h2>Follow the Journey, country hip-hop take 1</h2>
+<span class="badge new">New &ndash; Royce</span>
 <p class="style">NEW: country hip-hop, Shaboozy-style</p>
 <audio controls preload="none" data-src="audio/follow-the-journey-v2-take1.b64.txt"></audio>
 <details><summary>Show lyrics</summary><pre>[Verse]
@@ -227,9 +240,10 @@ Hey, hey, the Royce Family!</pre></details>
 <button class="sendbtn" type="button">Send my vote</button>
 </div>
 </section>
-<section class="card" data-title="Follow the Journey, country hip-hop take 2">
+<section class="card isnew" data-title="Follow the Journey, country hip-hop take 2">
 <div class="num">8</div>
 <h2>Follow the Journey, country hip-hop take 2</h2>
+<span class="badge new">New &ndash; Royce</span>
 <p class="style">NEW: country hip-hop, Shaboozy-style</p>
 <audio controls preload="none" data-src="audio/follow-the-journey-v2-take2.b64.txt"></audio>
 <details><summary>Show lyrics</summary><pre>[Verse]
@@ -252,9 +266,10 @@ Hey, hey, the Royce Family!</pre></details>
 <button class="sendbtn" type="button">Send my vote</button>
 </div>
 </section>
-<section class="card" data-title="Roll Out, country hip-hop take 1">
+<section class="card isnew" data-title="Roll Out, country hip-hop take 1">
 <div class="num">9</div>
 <h2>Roll Out, country hip-hop take 1</h2>
+<span class="badge new">New &ndash; Royce</span>
 <p class="style">NEW: country hip-hop, Shaboozy-style</p>
 <audio controls preload="none" data-src="audio/roll-out-v2-take1.b64.txt"></audio>
 <details><summary>Show lyrics</summary><pre>[Verse]
@@ -277,9 +292,10 @@ Roll out! The Royce Family!</pre></details>
 <button class="sendbtn" type="button">Send my vote</button>
 </div>
 </section>
-<section class="card" data-title="Roll Out, country hip-hop take 2">
+<section class="card isnew" data-title="Roll Out, country hip-hop take 2">
 <div class="num">10</div>
 <h2>Roll Out, country hip-hop take 2</h2>
+<span class="badge new">New &ndash; Royce</span>
 <p class="style">NEW: country hip-hop, Shaboozy-style</p>
 <audio controls preload="none" data-src="audio/roll-out-v2-take2.b64.txt"></audio>
 <details><summary>Show lyrics</summary><pre>[Verse]
