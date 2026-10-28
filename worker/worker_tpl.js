@@ -1,6 +1,6 @@
 const HTML = __HTML__;
 const AUDIO = __AUDIO__;
-const TITLES = {1:"Wagon Wheels, take 1",2:"Wagon Wheels, take 2",3:"Follow the Journey, take 1 (Original)",4:"Follow the Journey, take 2 (Original)",5:"Roll Out, take 1 (Original)",6:"Roll Out, take 2 (Original)",7:"Follow the Journey, country hip-hop take 1 (New - Royce)",8:"Follow the Journey, country hip-hop take 2 (New - Royce)",9:"Roll Out, country hip-hop take 1 (New - Royce)",10:"Roll Out, country hip-hop take 2 (New - Royce)"};
+const TITLES = {1:"Follow the Journey, take 1 (Original)",2:"Roll Out, take 1 (Original)",3:"Roll Out, take 2 (Original)",4:"Follow the Journey, country hip-hop take 1 (New - Royce)",5:"Follow the Journey, country hip-hop take 2 (New - Royce)",6:"Roll Out, country hip-hop take 1 (New - Royce)",7:"Roll Out, country hip-hop take 2 (New - Royce)"};
 function dec(b){const s=atob(b);const u=new Uint8Array(s.length);for(let i=0;i<s.length;i++)u[i]=s.charCodeAt(i);return u;}
 const cache={};
 const J=(o,s=200)=>new Response(JSON.stringify(o),{status:s,headers:{'content-type':'application/json; charset=utf-8','cache-control':'no-store'}});
@@ -9,7 +9,7 @@ async function sha(s){const d=await crypto.subtle.digest('SHA-256',new TextEncod
 function keyOk(env,k){if(!k||!env.RESULTS_KEY||k.length!==env.RESULTS_KEY.length)return false;let r=0;for(let i=0;i<k.length;i++)r|=k.charCodeAt(i)^env.RESULTS_KEY.charCodeAt(i);return r===0;}
 async function counts(env){
   const rs=await env.DB.prepare('SELECT option_id, COUNT(*) AS n FROM votes GROUP BY option_id').all();
-  const c={};for(let i=1;i<=10;i++)c[i]=0;let total=0;
+  const c={};for(let i=1;i<=7;i++)c[i]=0;let total=0;
   for(const r of rs.results){c[r.option_id]=r.n;total+=r.n;}
   return {counts:c,total};
 }
@@ -23,7 +23,7 @@ async function handleVote(req,env){
   if(origin&&new URL(origin).host!==new URL(req.url).host)return J({error:'bad origin'},403);
   let b;try{const t=await req.text();if(t.length>2000)return J({error:'too big'},413);b=JSON.parse(t);}catch(e){return J({error:'bad json'},400);}
   const opt=Number(b.option);
-  if(!Number.isInteger(opt)||opt<1||opt>10)return J({error:'option must be 1-10'},400);
+  if(!Number.isInteger(opt)||opt<1||opt>7)return J({error:'option must be 1-7'},400);
   const vid=String(b.voter_id||'');
   if(!/^[A-Za-z0-9-]{16,64}$/.test(vid))return J({error:'bad voter id'},400);
   const name=String(b.name||'').replace(/[\u0000-\u001f\u007f<>]/g,'').trim().slice(0,80);
@@ -42,7 +42,7 @@ async function resultsPage(env,key){
   const {counts:c,total}=await counts(env);
   const full=keyOk(env,key);
   const max=Math.max(1,...Object.values(c));
-  let rows='';for(let i=1;i<=10;i++)rows+=`<tr><td>${i}</td><td>${esc(TITLES[i])}</td><td class="n">${c[i]}</td><td><div class="bar" style="width:${Math.round(c[i]/max*100)}%"></div></td></tr>`;
+  let rows='';for(let i=1;i<=7;i++)rows+=`<tr><td>${i}</td><td>${esc(TITLES[i])}</td><td class="n">${c[i]}</td><td><div class="bar" style="width:${Math.round(c[i]/max*100)}%"></div></td></tr>`;
   let rec='';
   if(full){const r=await recent(env);rec=`<h2>Recent votes (America/Chicago)</h2><table><tr><th>When</th><th>Name</th><th>Voted for</th></tr>${r.map(v=>`<tr><td>${esc(v.last_updated)}${v.changed?' <em>(changed; first voted '+esc(v.first_voted)+')</em>':''}</td><td>${esc(v.name||'(no name)')}</td><td>#${v.option} ${esc(v.title)}</td></tr>`).join('')||'<tr><td colspan="3">No votes yet.</td></tr>'}</table>`;}
   else rec='<p class="note">Names and times are shown only on the private results link.</p>';
